@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ManageCards extends StatelessWidget {
-  const ManageCards({super.key});
+class Analytics extends StatelessWidget {
+  const Analytics({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,10 +9,10 @@ class ManageCards extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Manage Cards'),
+        title: const Text('Analytics'),
       ),
       body: const Center(
-        child: Text('Manage Cards'),
+        child: Text('Analytics'),
       ),
     );
   }
