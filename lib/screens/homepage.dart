@@ -2,10 +2,10 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:paynless/widgets/history_list.dart';
 import 'package:paynless/widgets/wallet.dart';
+
 import '../widgets/banners.dart';
 
 @immutable
@@ -317,7 +317,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Wallet(),
+                const Wallet(),
                 BannerWidget(),
                 const HistoryList(),
               ],

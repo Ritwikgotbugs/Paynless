@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,7 +51,6 @@ class MyApp extends StatelessWidget {
         '/profile': (_) => const Profile(),
         '/addcash': (_) => const AddCash(),
         '/analytics': (_) => const Analytics(),
-        '/payment': (_)=> const Payment(),
       },
     );
   }
