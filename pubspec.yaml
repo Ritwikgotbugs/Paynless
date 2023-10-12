@@ -69,7 +69,8 @@ flutter:
     - assets/banner.png
     - assets/gradient.png
     - assets/cash.jpg
-  #   - images/a_dot_ham.jpeg
+    - assets/Wallet.svg
+    - assets/home_gradient.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

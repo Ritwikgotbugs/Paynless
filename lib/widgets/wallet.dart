@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({super.key});
@@ -6,12 +7,12 @@ class Wallet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(50),
         clipBehavior: Clip.none,
         child: Container(
-          height: 90,
+          height: 80,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -30,19 +31,20 @@ class Wallet extends StatelessWidget {
               title: const Text(
                 '₹ 6240.99',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              trailing: Column(
-                children: [
-                  const Text(
-                    "Account Balance",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  TextButton(
-                      onPressed: () {}, child: const Text("Add to wallet"))
-                ],
+              trailing: TextButton(
+                onPressed: () {
+                  Get.toNamed("/addcash");
+                },
+                child: const Text("Add to Wallet +",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    )),
               ),
             ),
           ),
