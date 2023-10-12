@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paynless/widgets/wallet.dart';
@@ -34,9 +33,9 @@ class AddCash extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Wallet(),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
+                const Wallet(),
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
                   child: Text(
                     "Please Enter an amount",
                     style: TextStyle(fontSize: 18),
@@ -67,7 +66,7 @@ class AddCash extends StatelessWidget {
                       hintStyle: const TextStyle(color: Colors.grey),
                       filled: true,
                     ),
-                    style: TextStyle(fontSize: 20.0, color: Colors.black),
+                    style: const TextStyle(fontSize: 20.0, color: Colors.black),
                   ),
                 ),
                 Padding(
@@ -79,21 +78,21 @@ class AddCash extends StatelessWidget {
                       onPressed: () {
                         Get.toNamed("/payment");
                       },
-                      child: Text(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            const Color.fromARGB(255, 12, 83, 141)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ),
+                      child: const Text(
                         "Proceed",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(255, 12, 83, 141)),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
                         ),
                       ),
                     ),
@@ -111,8 +110,8 @@ class AddCash extends StatelessWidget {
                           borderRadius: BorderRadius.circular(40),
                         ),
                         hintText: "Note:",
-                        hintStyle: TextStyle(color: Colors.black)),
-                    style: TextStyle(fontSize: 20, color: Colors.black),
+                        hintStyle: const TextStyle(color: Colors.black)),
+                    style: const TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 )
               ],
