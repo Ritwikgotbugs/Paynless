@@ -7,29 +7,109 @@ class HistoryList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: 3,
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: ListTile(
-            tileColor: Colors.grey[800],
-            title: const Text('Butty',
-                style: TextStyle(color: Colors.white, fontSize: 20)),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            leading: CircleAvatar(
-              backgroundColor: Colors.grey[600],
-              child: const Icon(
-                Icons.person,
-                color: Colors.white,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(40),
+        child: Container(
+          color: Colors.lightBlueAccent.shade100,
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 24, top: 20),
+                child: Text(
+                  "Transaction History",
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                  ),
+                ),
               ),
-            ),
-            trailing: const Text(
-              "-₹100",
-              style: TextStyle(color: Colors.red, fontSize: 20),
-            ),
+              ListTile(
+                leading: Icon(
+                  Icons.arrow_outward_outlined,
+                  color: Colors.black,
+                  size: 30,
+                ),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Paid To',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Text("₹50",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold))
+                  ],
+                ),
+                subtitle: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Name'),
+                    Text('Yesterday'),
+                  ],
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.arrow_outward_outlined,
+                  color: Colors.black,
+                  size: 30,
+                ),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Paid To',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Text("₹50",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold))
+                  ],
+                ),
+                subtitle: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Name'),
+                    Text('Yesterday'),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 16),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.arrow_outward_outlined,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Paid To',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Text("₹50",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold))
+                    ],
+                  ),
+                  subtitle: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Name'),
+                      Text('Yesterday'),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

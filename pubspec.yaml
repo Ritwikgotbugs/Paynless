@@ -39,6 +39,8 @@ dependencies:
   supabase_flutter: ^1.10.22
   flutter_dotenv: ^5.1.0
   flutter_expandable_fab: ^2.0.0
+  flutter_svg: ^2.0.7
+  flutter_custom_clippers: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -67,7 +69,8 @@ flutter:
     - assets/banner.png
     - assets/gradient.png
     - assets/cash.jpg
-  #   - images/a_dot_ham.jpeg
+    - assets/Wallet.svg
+    - assets/home_gradient.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

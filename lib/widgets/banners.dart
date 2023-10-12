@@ -9,7 +9,8 @@ class BannerWidget extends StatelessWidget {
     'assets/banner.png',
   ];
 
-  final PageController _pageController = PageController(initialPage: 0, viewportFraction: 0.9);
+  final PageController _pageController =
+      PageController(initialPage: 2, viewportFraction: 0.9);
 
   BannerWidget({super.key});
 

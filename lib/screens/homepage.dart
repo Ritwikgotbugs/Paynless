@@ -2,10 +2,10 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:paynless/widgets/history_list.dart';
 import 'package:paynless/widgets/wallet.dart';
-
 import '../widgets/banners.dart';
 
 @immutable
@@ -252,10 +252,12 @@ class _HomePageState extends State<HomePage> {
           size: 35,
         ),
         centerTitle: true,
-        title: const Text('Paynless',
-            style: TextStyle(color: Colors.black, fontSize: 35)),
+        title: const Text(
+          'Paynless',
+          style: TextStyle(color: Colors.black, fontSize: 35),
+        ),
         backgroundColor: Colors.transparent,
-        toolbarHeight: 100,
+        toolbarHeight: 60,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -269,61 +271,51 @@ class _HomePageState extends State<HomePage> {
                 size: 40,
               ),
             ),
-          )
+          ),
         ],
       ),
       body: Stack(
+        // alignment: Alignment.center,
         children: [
+          SvgPicture.asset(
+            'assets/home_gradient.svg',
+            fit: BoxFit.fill,
+          ),
           SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Wallet(),
-                BannerWidget(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 12),
-                      child: Text(
-                        "Transaction History",
-                        style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, top: 12, bottom: 12),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.grey[600],
+                      child: const Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 50,
                       ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 12),
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[800],
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Row(
-                          children: [
-                            Text(
-                              "View All",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 5),
-                              child: Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                size: 19,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                    title: const Text(
+                      "Welcome Back,",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
                     ),
-                  ],
+                    subtitle: const Text(
+                      "Vikram!",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
                 ),
+                Wallet(),
+                BannerWidget(),
                 const HistoryList(),
               ],
             ),
