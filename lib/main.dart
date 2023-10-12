@@ -1,13 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:paynless/screens/login_page.dart';
+import 'package:get/get.dart';
 import 'package:paynless/screens/action_buttons/add_cash.dart';
 import 'package:paynless/screens/action_buttons/analytics.dart';
 import 'package:paynless/screens/action_buttons/history.dart';
-import 'package:get/get.dart';
 import 'package:paynless/screens/homepage.dart';
+import 'package:paynless/screens/login_page.dart';
 import 'package:paynless/screens/manage_cards.dart';
 import 'package:paynless/screens/profile.dart';
 import 'package:paynless/utils/flutter_init_sdk.dart';

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import 'custom_button.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({super.key});
@@ -22,7 +19,7 @@ class Wallet extends StatelessWidget {
               BoxShadow(
                 color: Colors.grey[300]!,
                 blurRadius: 4,
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
                 spreadRadius: 3,
               )
             ],
@@ -30,7 +27,7 @@ class Wallet extends StatelessWidget {
           child: Center(
             child: ListTile(
               leading: Image.asset('assets/cash.jpg'),
-              title: Text(
+              title: const Text(
                 '₹ 6240.99',
                 style: TextStyle(
                   fontSize: 30,
@@ -39,11 +36,12 @@ class Wallet extends StatelessWidget {
               ),
               trailing: Column(
                 children: [
-                  Text(
+                  const Text(
                     "Account Balance",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                  TextButton(onPressed: () {}, child: Text("Add to wallet"))
+                  TextButton(
+                      onPressed: () {}, child: const Text("Add to wallet"))
                 ],
               ),
             ),

@@ -14,7 +14,7 @@ class HistoryList extends StatelessWidget {
           padding: const EdgeInsets.all(4.0),
           child: ListTile(
             tileColor: Colors.grey[800],
-            title: Text('Butty',
+            title: const Text('Butty',
                 style: TextStyle(color: Colors.white, fontSize: 20)),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -26,7 +26,7 @@ class HistoryList extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            trailing: Text(
+            trailing: const Text(
               "-₹100",
               style: TextStyle(color: Colors.red, fontSize: 20),
             ),
