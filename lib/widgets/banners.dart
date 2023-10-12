@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class BannerWidget extends StatelessWidget {
   final List<String> bannerItems = [
-    'assets/banner.jpg',
-    'assets/banner.jpg',
+    'assets/banner.png',
+    'assets/banner.png',
+    'assets/banner.png',
+    'assets/banner.png',
+    'assets/banner.png',
   ];
 
-  final PageController _pageController =
-      PageController(initialPage: 1, viewportFraction: 1);
+  final PageController _pageController = PageController(initialPage: 0, viewportFraction: 0.9);
 
   BannerWidget({super.key});
 
@@ -16,22 +18,15 @@ class BannerWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: SizedBox(
-        height: 200, // Adjust the height according to your requirements
+        height: 200,
         child: PageView.builder(
           controller: _pageController,
           itemCount: bannerItems.length,
-          onPageChanged: (value) {
-            if (bannerItems.length - 1 == value) {
-              _pageController.jumpToPage(1);
-            } else if (value == 0) {
-              _pageController.jumpToPage(bannerItems.length - 2);
-            }
-          },
           itemBuilder: (BuildContext context, int index) {
             return Padding(
-              padding: const EdgeInsets.only(left: 2, right: 2),
+              padding: const EdgeInsets.only(left: 10, right: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(0),
+                borderRadius: BorderRadius.circular(10),
                 child: AspectRatio(
                   aspectRatio: 1.5,
                   child: Image.asset(

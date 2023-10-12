@@ -1,11 +1,10 @@
 import 'dart:math' as math;
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:paynless/widgets/history_list.dart';
+import 'package:paynless/widgets/wallet.dart';
 import '../widgets/banners.dart';
-import '../widgets/custom_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,19 +19,28 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        leading: Icon(
+          Icons.menu,
+          color: Colors.black,
+          size: 35,
+        ),
+        centerTitle: true,
         title: const Text('Paynless',
-            style: TextStyle(color: Colors.white, fontSize: 30)),
+            style: TextStyle(color: Colors.black, fontSize: 35)),
         backgroundColor: Colors.transparent,
-        toolbarHeight: 80,
+        toolbarHeight: 100,
         actions: [
-          IconButton(
-            onPressed: () {
-              Get.toNamed('/profile');
-            },
-            icon: Icon(
-              Icons.account_circle_rounded,
-              color: Colors.white,
-              size: 35,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              onPressed: () {
+                Get.toNamed('/profile');
+              },
+              icon: Icon(
+                Icons.account_circle_rounded,
+                color: Colors.black,
+                size: 40,
+              ),
             ),
           )
         ],
@@ -44,38 +52,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      height: 300,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[800],
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              KButton(
-                                text: "Manage Cards",
-                                onpressed: () => Get.toNamed('/settings'),
-                              ),
-                              KButton(
-                                text: "View History",
-                                onpressed: () => Get.toNamed('/history'),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                Wallet(),
                 BannerWidget(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                         "Transaction History",
                         style: TextStyle(
                             fontSize: 24,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -104,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                               "View All",
                               style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.white,
+                                  color: Colors.grey,
                                   fontWeight: FontWeight.w600),
                             ),
                             Padding(
@@ -120,6 +97,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
+                HistoryList(),
               ],
             ),
           ),

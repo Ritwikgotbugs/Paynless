@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Paynless',
-      theme: ThemeData.dark(), 
+      theme: ThemeData.light(),
       initialRoute: "/main",
       routes: <String, WidgetBuilder>{
         '/main': (_) => const HomePage(),
