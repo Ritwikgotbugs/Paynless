@@ -71,6 +71,9 @@ flutter:
     - assets/cash.jpg
     - assets/Wallet.png
     - assets/Dashboard.png
+    - assets/Sign_in.png
+    - assets/Login.png
+    - assets/paynless.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

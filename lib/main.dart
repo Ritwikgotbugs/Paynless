@@ -12,6 +12,7 @@ import 'package:paynless/screens/login_page.dart';
 import 'package:paynless/screens/manage_cards.dart';
 import 'package:paynless/screens/onboarding.dart';
 import 'package:paynless/screens/profile.dart';
+import 'package:paynless/screens/signIn_page.dart';
 import 'package:paynless/utils/flutter_init_sdk.dart';
 
 void main() {
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         "/onboarding": (_) => const Onboarding(),
         "/landing": (_) => const Landing(),
         "/login": (_) => const LoginPage(),
+        "/signup": (_) => const SignUpPage(),
         '/settings': (_) => const ManageCards(),
         '/history': (_) => const History(),
         '/profile': (_) => const Profile(),

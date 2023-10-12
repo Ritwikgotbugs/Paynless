@@ -3,18 +3,19 @@ import 'package:get/get.dart';
 import 'package:paynless/utils/db.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Image.asset(
-            "assets/Sign_in.png",
+            "assets/Login.png",
             fit: BoxFit.cover,
             width: Get.size.width,
             height: Get.size.height,
@@ -43,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.only(top: 225.0),
                   child: Column(
                     children: [
-                      Text("Let's Sign you in!",
+                      Text("Create Account",
                           style: TextStyle(
                               color: Color.fromARGB(255, 20, 118, 136),
                               fontSize: 32,
@@ -57,20 +58,6 @@ class _LoginPageState extends State<LoginPage> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
-                                    'Welcome Back,',
-                                    style: TextStyle(
-                                      fontSize: 36.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Text(
-                                    'You have been missed',
-                                    style: TextStyle(
-                                        fontSize: 22.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey),
-                                  ),
                                   const SizedBox(height: 32.0),
                                   Container(
                                     decoration: BoxDecoration(
@@ -83,10 +70,9 @@ class _LoginPageState extends State<LoginPage> {
                                             spreadRadius: 0.5,
                                           ),
                                         ],
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
+                                        borderRadius: BorderRadius.circular(40)),
                                     child: TextFormField(
-                                      controller: _emailController,
+                                      controller: _usernameController,
                                       keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
                                         labelText: 'Username',
@@ -98,8 +84,47 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                         border: OutlineInputBorder(
                                           borderSide: BorderSide.none,
-                                          borderRadius:
-                                              BorderRadius.circular(40),
+                                          borderRadius: BorderRadius.circular(40),
+                                        ),
+                                      ),
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter your username';
+                                        }
+                                        if (value.length < 6) {
+                                          return 'Username must be at least 6 characters';
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16.0),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[500]!,
+                                            blurRadius: 2,
+                                            offset: const Offset(0, 2),
+                                            spreadRadius: 0.5,
+                                          ),
+                                        ],
+                                        borderRadius: BorderRadius.circular(40)),
+                                    child: TextFormField(
+                                      controller: _passwordController,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        labelText: 'Password',
+                                        labelStyle:
+                                            const TextStyle(color: Colors.grey),
+                                        prefixIcon: const Icon(
+                                          Icons.lock,
+                                          color: Colors.grey,
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                          borderRadius: BorderRadius.circular(40),
                                         ),
                                       ),
                                       validator: (value) {
@@ -125,56 +150,86 @@ class _LoginPageState extends State<LoginPage> {
                                             spreadRadius: 0.5,
                                           ),
                                         ],
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
+                                        borderRadius: BorderRadius.circular(40)),
                                     child: TextFormField(
-                                      controller: _passwordController,
-                                      obscureText: true,
+                                      controller: _emailController,
+                                      keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
-                                        labelText: 'Password',
+                                        labelText: 'Email',
                                         labelStyle:
                                             const TextStyle(color: Colors.grey),
                                         prefixIcon: const Icon(
-                                          Icons.lock,
+                                          Icons.mail,
                                           color: Colors.grey,
                                         ),
                                         border: OutlineInputBorder(
                                           borderSide: BorderSide.none,
-                                          borderRadius:
-                                              BorderRadius.circular(40),
+                                          borderRadius: BorderRadius.circular(40),
                                         ),
                                       ),
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
-                                          return 'Please enter your password';
+                                          return 'Please enter your email';
                                         }
-                                        if (value.length < 6) {
-                                          return 'Password must be at least 6 characters';
+                                        if (!value.contains('@')) {
+                                          return 'Please enter a valid email';
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16.0),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[500]!,
+                                            blurRadius: 2,
+                                            offset: const Offset(0, 2),
+                                            spreadRadius: 0.5,
+                                          ),
+                                        ],
+                                        borderRadius: BorderRadius.circular(40)),
+                                    child: TextFormField(
+                                      controller: _phoneController,
+                                      obscureText: true,
+                                      decoration: InputDecoration(
+                                        labelText: 'Mobile',
+                                        labelStyle:
+                                            const TextStyle(color: Colors.grey),
+                                        prefixIcon: const Icon(
+                                          Icons.mobile_friendly,
+                                          color: Colors.grey,
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                          borderRadius: BorderRadius.circular(40),
+                                        ),
+                                      ),
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter your phone number';
+                                        }
+                                        if (value.length < 10) {
+                                          return 'Please enter a valid phone number';
                                         }
                                         return null;
                                       },
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 20, right: 10),
+                                    padding:
+                                        const EdgeInsets.only(top: 20, right: 10),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         SizedBox(),
-                                        TextButton(
-                                          onPressed: () {},
-                                          child: Text("Forgot your Password?",
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.grey)),
-                                        ),
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(height: 30.0),
+                                  const SizedBox(height: 25.0),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -184,11 +239,10 @@ class _LoginPageState extends State<LoginPage> {
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.all(12.0),
-                                            child: Text("Sign In",
+                                            child: Text("Create",
                                                 style: TextStyle(
                                                     fontSize: 24,
-                                                    fontWeight:
-                                                        FontWeight.bold)),
+                                                    fontWeight: FontWeight.bold)),
                                           ),
                                           ElevatedButton(
                                             style: ButtonStyle(
@@ -248,11 +302,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 30),
                   child: Column(
                     children: [
                       Text(
-                        "Don't have an account?",
+                        "Already have an account?",
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -260,10 +314,10 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.toNamed("/signup");
+                          Get.toNamed("/login");
                         },
                         child: Text(
-                          "Sign Up",
+                          "Login",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
