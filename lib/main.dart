@@ -2,12 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:paynless/screens/action_buttons/add_cash.dart';
 import 'package:paynless/screens/action_buttons/analytics.dart';
 import 'package:paynless/screens/action_buttons/history.dart';
 import 'package:paynless/screens/homepage.dart';
+import 'package:paynless/screens/landing.dart';
 import 'package:paynless/screens/login_page.dart';
 import 'package:paynless/screens/manage_cards.dart';
+import 'package:paynless/screens/onboarding.dart';
 import 'package:paynless/screens/profile.dart';
 import 'package:paynless/utils/flutter_init_sdk.dart';
 
@@ -34,10 +37,14 @@ class MyApp extends StatelessWidget {
       title: 'Paynless',
       theme: ThemeData.light(
         useMaterial3: true,
+      ).copyWith(
+        textTheme: GoogleFonts.outfitTextTheme(),
       ),
-      initialRoute: "/login",
+      initialRoute: "/landing",
       routes: <String, WidgetBuilder>{
         '/': (_) => const HomePage(),
+        "/onboarding": (_) => const Onboarding(),
+        "/landing": (_) => const Landing(),
         "/login": (_) => const LoginPage(),
         '/settings': (_) => const ManageCards(),
         '/history': (_) => const History(),
