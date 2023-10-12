@@ -7,6 +7,7 @@ import 'package:paynless/screens/action_buttons/history.dart';
 import 'package:paynless/screens/homepage.dart';
 import 'package:paynless/screens/login_page.dart';
 import 'package:paynless/screens/manage_cards.dart';
+import 'package:paynless/screens/payment.dart';
 import 'package:paynless/screens/profile.dart';
 import 'package:paynless/utils/flutter_init_sdk.dart';
 
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/profile': (_) => const Profile(),
         '/addcash': (_) => const AddCash(),
         '/analytics': (_) => const Analytics(),
+        '/payment': (_)=> const Payment(),
       },
     );
   }

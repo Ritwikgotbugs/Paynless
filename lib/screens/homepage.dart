@@ -244,6 +244,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0,
         leading: const Icon(
@@ -277,9 +278,11 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         // alignment: Alignment.center,
         children: [
-          SvgPicture.asset(
-            'assets/home_gradient.svg',
+          Image.asset(
+            "assets/Dashboard.png",
             fit: BoxFit.fill,
+            width: Get.size.width,
+            height: Get.size.height,
           ),
           SingleChildScrollView(
             child: Column(
@@ -287,7 +290,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 8, top: 12, bottom: 12),
+                  padding: const EdgeInsets.only(left: 8, top: 110, bottom: 12),
                   child: ListTile(
                     leading: CircleAvatar(
                       radius: 30,
