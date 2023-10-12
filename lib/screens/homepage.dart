@@ -1,49 +1,153 @@
 import 'dart:math' as math;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ExampleExpandableFab extends StatelessWidget {
-  static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
+import '../widgets/banners.dart';
+import '../widgets/custom_button.dart';
 
-  const ExampleExpandableFab({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
-  void _showAction(BuildContext context, int index) {
-    showDialog<void>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: Text(_actionTitles[index]),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('CLOSE'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Expandable Fab'),
+        elevation: 0,
+        title: const Text('Paynless',
+            style: TextStyle(color: Colors.white, fontSize: 30)),
+        backgroundColor: Colors.transparent,
+        toolbarHeight: 80,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.toNamed('/profile');
+            },
+            icon: Icon(
+              Icons.account_circle_rounded,
+              color: Colors.white,
+              size: 35,
+            ),
+          )
+        ],
       ),
-      floatingActionButton: ExpandableFab(
-        distance: 112,
+      body: Stack(
         children: [
-          ActionButton(
-            onPressed: () => _showAction(context, 0),
-            icon: const Icon(Icons.format_size),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      height: 300,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[800],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              KButton(
+                                text: "Manage Cards",
+                                onpressed: () => Get.toNamed('/settings'),
+                              ),
+                              KButton(
+                                text: "View History",
+                                onpressed: () => Get.toNamed('/history'),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                BannerWidget(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 12),
+                      child: Text(
+                        "Transaction History",
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 12),
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[800],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Row(
+                          children: [
+                            Text(
+                              "View All",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 5),
+                              child: Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 19,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-          ActionButton(
-            onPressed: () => _showAction(context, 1),
-            icon: const Icon(Icons.insert_photo),
-          ),
-          ActionButton(
-            onPressed: () => _showAction(context, 2),
-            icon: const Icon(Icons.videocam),
+          Padding(
+            padding: const EdgeInsets.only(right: 175, bottom: 10),
+            child: ExpandableFab(
+              distance: 90,
+              children: [
+                ActionButton(
+                  onPressed: () {
+                    Get.toNamed("/addcash");
+                  },
+                  icon: const Icon(CupertinoIcons.money_dollar),
+                ),
+                ActionButton(
+                  onPressed: () {
+                    Get.toNamed("/history");
+                  },
+                  icon: const Icon(Icons.history),
+                ),
+                ActionButton(
+                  onPressed: () {
+                    Get.toNamed("/profile");
+                  },
+                  icon: const Icon(Icons.bar_chart_rounded),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -137,7 +241,7 @@ class _ExpandableFabState extends State<ExpandableFab>
               padding: const EdgeInsets.all(8),
               child: Icon(
                 Icons.close,
-                color: Theme.of(context).primaryColor,
+                color: Colors.white,
               ),
             ),
           ),
@@ -170,11 +274,6 @@ class _ExpandableFabState extends State<ExpandableFab>
       ignoring: _open,
       child: AnimatedContainer(
         transformAlignment: Alignment.center,
-        transform: Matrix4.diagonal3Values(
-          _open ? 0.7 : 1.0,
-          _open ? 0.7 : 1.0,
-          1.0,
-        ),
         duration: const Duration(milliseconds: 250),
         curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
         child: AnimatedOpacity(
@@ -182,8 +281,9 @@ class _ExpandableFabState extends State<ExpandableFab>
           curve: const Interval(0.25, 1.0, curve: Curves.easeInOut),
           duration: const Duration(milliseconds: 250),
           child: FloatingActionButton(
+            backgroundColor: Colors.lightBlue,
             onPressed: _toggle,
-            child: const Icon(Icons.create),
+            child: const Icon(Icons.menu),
           ),
         ),
       ),
@@ -244,16 +344,15 @@ class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Material(
       shape: const CircleBorder(),
       clipBehavior: Clip.antiAlias,
-      color: theme.colorScheme.secondary,
+      color: Colors.lightBlueAccent,
       elevation: 4,
       child: IconButton(
         onPressed: onPressed,
         icon: icon,
-        color: theme.colorScheme.onSecondary,
+        color: Colors.black,
       ),
     );
   }
@@ -275,7 +374,7 @@ class FakeItem extends StatelessWidget {
       height: isBig ? 128 : 36,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(8)),
-        color: Colors.grey.shade300,
+        color: Colors.amber,
       ),
     );
   }

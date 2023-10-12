@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../styles/colors.dart';
-
 class KButton extends StatelessWidget {
   final String text;
   final Function onpressed;
@@ -17,7 +15,8 @@ class KButton extends StatelessWidget {
             onpressed();
           },
           style: ButtonStyle(
-            backgroundColor: const MaterialStatePropertyAll(buttonColor),
+            backgroundColor:
+                const MaterialStatePropertyAll(Colors.lightBlueAccent),
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
@@ -31,7 +30,7 @@ class KButton extends StatelessWidget {
                 text,
                 style: TextStyle(
                     fontSize: 16,
-                    color: textColor,
+                    color: Colors.black,
                     fontWeight: FontWeight.w600),
               ),
             ],

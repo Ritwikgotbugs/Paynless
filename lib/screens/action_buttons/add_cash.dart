@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ManageCards extends StatelessWidget {
-  const ManageCards({super.key});
+class AddCash extends StatelessWidget {
+  const AddCash({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Manage Cards'),
+        title: const Text('Add Cash'),
       ),
       body: const Center(
-        child: Text('Manage Cards'),
+        child: Text('Add Cash'),
       ),
     );
   }

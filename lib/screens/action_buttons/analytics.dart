@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class History extends StatelessWidget {
-  const History({super.key});
+class Analytics extends StatelessWidget {
+  const Analytics({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('History'),
+        elevation: 0,
+        title: const Text('Analytics'),
       ),
       body: const Center(
-        child: Text('History'),
+        child: Text('Analytics'),
       ),
     );
   }
