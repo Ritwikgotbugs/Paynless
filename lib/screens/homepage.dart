@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 175, bottom: 10),
+            padding: const EdgeInsets.only(right: 20, bottom: 20),
             child: ExpandableFab(
               distance: 90,
               children: [
