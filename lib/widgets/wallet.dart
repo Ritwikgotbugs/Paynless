@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Wallet extends StatelessWidget {
-  const Wallet({super.key});
+  final double wallet;
+
+  const Wallet({super.key, required this.wallet});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,9 @@ class Wallet extends StatelessWidget {
           child: Center(
             child: ListTile(
               leading: Image.asset('assets/cash.jpg'),
-              title: const Text(
-                '₹ 6240.99',
-                style: TextStyle(
+              title: Text(
+                '₹ $wallet',
+                style: const TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),

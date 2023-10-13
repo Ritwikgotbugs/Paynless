@@ -3,8 +3,10 @@ import 'dart:math' as math;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paynless/utils/db.dart';
 import 'package:paynless/widgets/history_list.dart';
 import 'package:paynless/widgets/wallet.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../widgets/banners.dart';
 
@@ -241,6 +243,8 @@ class _ExpandingActionButton extends StatelessWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = RefreshController(initialRefresh: false);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -275,81 +279,113 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Stack(
-        // alignment: Alignment.center,
-        children: [
-          Image.asset(
-            "assets/Dashboard.png",
-            fit: BoxFit.fill,
-            width: Get.size.width,
-            height: Get.size.height,
-          ),
-          SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: SmartRefresher(
+        controller: controller,
+        onRefresh: () async {
+          controller.refreshCompleted();
+          setState(() {});
+        },
+        child: StreamBuilder(
+          stream: db
+              .from('profiles')
+              .select('*')
+              .eq("uuid", db.auth.currentUser!.id)
+              .single()
+              .asStream(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              print(snapshot.error);
+              return const Center(
+                child: Text("Something went wrong"),
+              );
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return Stack(
+              // alignment: Alignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8, top: 110, bottom: 12),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.grey[600],
-                      child: const Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 50,
+                Image.asset(
+                  "assets/Dashboard.png",
+                  fit: BoxFit.fill,
+                  width: Get.size.width,
+                  height: Get.size.height,
+                ),
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 8, top: 110, bottom: 12),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 30,
+                            backgroundColor: Colors.grey[600],
+                            child: const Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 50,
+                            ),
+                          ),
+                          title: const Text(
+                            "Welcome Back,",
+                            style: TextStyle(
+                                fontSize: 22,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          subtitle: const Text(
+                            "Vikram!",
+                            style: TextStyle(
+                                fontSize: 22,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
                       ),
-                    ),
-                    title: const Text(
-                      "Welcome Back,",
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400),
-                    ),
-                    subtitle: const Text(
-                      "Vikram!",
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400),
-                    ),
+                      Wallet(
+                        wallet:
+                            double.parse(snapshot.data!['wallet'].toString()),
+                      ),
+                      BannerWidget(),
+                      const HistoryList(),
+                    ],
                   ),
                 ),
-                const Wallet(),
-                BannerWidget(),
-                const HistoryList(),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20, bottom: 20),
-            child: ExpandableFab(
-              distance: 90,
-              children: [
-                ActionButton(
-                  onPressed: () {
-                    Get.toNamed("/addcash");
-                  },
-                  icon: const Icon(CupertinoIcons.money_dollar),
-                ),
-                ActionButton(
-                  onPressed: () {
-                    Get.toNamed("/history");
-                  },
-                  icon: const Icon(Icons.history),
-                ),
-                ActionButton(
-                  onPressed: () {
-                    Get.toNamed("/profile");
-                  },
-                  icon: const Icon(Icons.bar_chart_rounded),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20, bottom: 20),
+                  child: ExpandableFab(
+                    distance: 90,
+                    children: [
+                      ActionButton(
+                        onPressed: () {
+                          Get.toNamed("/addcash");
+                        },
+                        icon: const Icon(CupertinoIcons.money_dollar),
+                      ),
+                      ActionButton(
+                        onPressed: () {
+                          Get.toNamed("/history");
+                        },
+                        icon: const Icon(Icons.history),
+                      ),
+                      ActionButton(
+                        onPressed: () {
+                          Get.toNamed("/profile");
+                        },
+                        icon: const Icon(Icons.bar_chart_rounded),
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            ),
-          ),
-        ],
+            );
+          },
+        ),
       ),
     );
   }

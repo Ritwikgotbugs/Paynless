@@ -41,12 +41,12 @@ class MyApp extends StatelessWidget {
       ).copyWith(
         textTheme: GoogleFonts.outfitTextTheme(),
       ),
-      initialRoute: "/onboarding",
+      initialRoute: "/login",
       routes: <String, WidgetBuilder>{
+        "/login": (_) => const LoginPage(),
         '/': (_) => const HomePage(),
         "/onboarding": (_) => const Onboarding(),
         "/landing": (_) => const Landing(),
-        "/login": (_) => const LoginPage(),
         "/signup": (_) => const SignUpPage(),
         '/settings': (_) => const ManageCards(),
         '/history': (_) => const History(),
