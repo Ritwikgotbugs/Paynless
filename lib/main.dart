@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       ).copyWith(
         textTheme: GoogleFonts.outfitTextTheme(),
       ),
-      initialRoute: "/login",
+      initialRoute: "/onboarding",
       routes: <String, WidgetBuilder>{
         "/onboarding": (_) => const Onboarding(),
         "/landing": (_) => const Landing(),
