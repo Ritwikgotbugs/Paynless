@@ -44,7 +44,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   padding: const EdgeInsets.only(top: 225.0),
                   child: Column(
                     children: [
-                      Text("Create Account",
+                      const Text("Create Account",
                           style: TextStyle(
                               color: Color.fromARGB(255, 20, 118, 136),
                               fontSize: 32,
@@ -70,7 +70,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                             spreadRadius: 0.5,
                                           ),
                                         ],
-                                        borderRadius: BorderRadius.circular(40)),
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
                                     child: TextFormField(
                                       controller: _usernameController,
                                       keyboardType: TextInputType.emailAddress,
@@ -84,7 +85,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                         ),
                                         border: OutlineInputBorder(
                                           borderSide: BorderSide.none,
-                                          borderRadius: BorderRadius.circular(40),
+                                          borderRadius:
+                                              BorderRadius.circular(40),
                                         ),
                                       ),
                                       validator: (value) {
@@ -110,7 +112,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                             spreadRadius: 0.5,
                                           ),
                                         ],
-                                        borderRadius: BorderRadius.circular(40)),
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
                                     child: TextFormField(
                                       controller: _passwordController,
                                       keyboardType: TextInputType.emailAddress,
@@ -124,7 +127,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                         ),
                                         border: OutlineInputBorder(
                                           borderSide: BorderSide.none,
-                                          borderRadius: BorderRadius.circular(40),
+                                          borderRadius:
+                                              BorderRadius.circular(40),
                                         ),
                                       ),
                                       validator: (value) {
@@ -150,7 +154,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                             spreadRadius: 0.5,
                                           ),
                                         ],
-                                        borderRadius: BorderRadius.circular(40)),
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
                                     child: TextFormField(
                                       controller: _emailController,
                                       keyboardType: TextInputType.emailAddress,
@@ -164,7 +169,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                         ),
                                         border: OutlineInputBorder(
                                           borderSide: BorderSide.none,
-                                          borderRadius: BorderRadius.circular(40),
+                                          borderRadius:
+                                              BorderRadius.circular(40),
                                         ),
                                       ),
                                       validator: (value) {
@@ -190,7 +196,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                             spreadRadius: 0.5,
                                           ),
                                         ],
-                                        borderRadius: BorderRadius.circular(40)),
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
                                     child: TextFormField(
                                       controller: _phoneController,
                                       obscureText: true,
@@ -204,7 +211,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                         ),
                                         border: OutlineInputBorder(
                                           borderSide: BorderSide.none,
-                                          borderRadius: BorderRadius.circular(40),
+                                          borderRadius:
+                                              BorderRadius.circular(40),
                                         ),
                                       ),
                                       validator: (value) {
@@ -218,9 +226,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                       },
                                     ),
                                   ),
-                                  Padding(
+                                  const Padding(
                                     padding:
-                                        const EdgeInsets.only(top: 20, right: 10),
+                                        EdgeInsets.only(top: 20, right: 10),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -234,20 +242,21 @@ class _SignUpPageState extends State<SignUpPage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      SizedBox(),
+                                      const SizedBox(),
                                       Row(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(12.0),
+                                          const Padding(
+                                            padding: EdgeInsets.all(12.0),
                                             child: Text("Create",
                                                 style: TextStyle(
                                                     fontSize: 24,
-                                                    fontWeight: FontWeight.bold)),
+                                                    fontWeight:
+                                                        FontWeight.bold)),
                                           ),
                                           ElevatedButton(
-                                            style: ButtonStyle(
+                                            style: const ButtonStyle(
                                               backgroundColor:
-                                                  const MaterialStatePropertyAll(
+                                                  MaterialStatePropertyAll(
                                                       Color.fromARGB(
                                                           255, 20, 118, 136)),
                                             ),
@@ -283,7 +292,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                                 }
                                               }
                                             },
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.arrow_forward,
                                               color: Colors.white,
                                             ),
@@ -305,7 +314,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   padding: const EdgeInsets.only(bottom: 30),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Already have an account?",
                         style: TextStyle(
                             fontSize: 16,
@@ -316,7 +325,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         onPressed: () {
                           Get.toNamed("/login");
                         },
-                        child: Text(
+                        child: const Text(
                           "Login",
                           style: TextStyle(
                             fontSize: 16,

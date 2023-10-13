@@ -6,7 +6,7 @@ class History extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _searchController = TextEditingController();
+    final TextEditingController searchController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -32,7 +32,7 @@ class History extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(40)),
                     child: TextFormField(
-                      controller: _searchController,
+                      controller: searchController,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                         hintText: 'Search Transactions',
@@ -43,7 +43,7 @@ class History extends StatelessWidget {
                         ),
                         suffixIcon: IconButton(
                           onPressed: () {
-                            _searchController.clear();
+                            searchController.clear();
                           },
                           icon: const Icon(
                             Icons.clear,
@@ -65,8 +65,8 @@ class History extends StatelessWidget {
                         onPressed: () {},
                         style: ButtonStyle(
                           backgroundColor: const MaterialStatePropertyAll(
-                              Colors.transparent,
-                              ),
+                            Colors.transparent,
+                          ),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -76,16 +76,16 @@ class History extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               "Cateogries",
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600),
                             ),
                             IconButton(
                                 onPressed: () {},
-                                icon: Icon(Icons.keyboard_arrow_down))
+                                icon: const Icon(Icons.keyboard_arrow_down))
                           ],
                         ),
                       ),
@@ -106,23 +106,23 @@ class History extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Filter",
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600),
                             ),
                             IconButton(
                                 onPressed: () {},
-                                icon: Icon(Icons.keyboard_arrow_down))
+                                icon: const Icon(Icons.keyboard_arrow_down))
                           ],
                         ),
                       ),
                     ),
                   ],
                 ),
-                HistoryView()
+                const HistoryView()
               ],
             ),
           ),

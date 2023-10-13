@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.only(top: 225.0),
                   child: Column(
                     children: [
-                      Text("Let's Sign you in!",
+                      const Text("Let's Sign you in!",
                           style: TextStyle(
                               color: Color.fromARGB(255, 20, 118, 136),
                               fontSize: 32,
@@ -162,10 +162,11 @@ class _LoginPageState extends State<LoginPage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        SizedBox(),
+                                        const SizedBox(),
                                         TextButton(
                                           onPressed: () {},
-                                          child: Text("Forgot your Password?",
+                                          child: const Text(
+                                              "Forgot your Password?",
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold,
@@ -179,11 +180,11 @@ class _LoginPageState extends State<LoginPage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      SizedBox(),
+                                      const SizedBox(),
                                       Row(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(12.0),
+                                          const Padding(
+                                            padding: EdgeInsets.all(12.0),
                                             child: Text("Sign In",
                                                 style: TextStyle(
                                                     fontSize: 24,
@@ -191,9 +192,9 @@ class _LoginPageState extends State<LoginPage> {
                                                         FontWeight.bold)),
                                           ),
                                           ElevatedButton(
-                                            style: ButtonStyle(
+                                            style: const ButtonStyle(
                                               backgroundColor:
-                                                  const MaterialStatePropertyAll(
+                                                  MaterialStatePropertyAll(
                                                       Color.fromARGB(
                                                           255, 20, 118, 136)),
                                             ),
@@ -229,7 +230,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 }
                                               }
                                             },
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.arrow_forward,
                                               color: Colors.white,
                                             ),
@@ -251,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Don't have an account?",
                         style: TextStyle(
                             fontSize: 16,
@@ -262,7 +263,7 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           Get.toNamed("/signup");
                         },
-                        child: Text(
+                        child: const Text(
                           "Sign Up",
                           style: TextStyle(
                             fontSize: 16,

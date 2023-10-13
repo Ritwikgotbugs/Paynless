@@ -135,12 +135,12 @@ class HistoryView extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: ListTile(
           tileColor: Colors.white.withOpacity(0.8),
-          leading: Icon(
+          leading: const Icon(
             Icons.arrow_outward_outlined,
             color: Colors.black,
             size: 30,
           ),
-          title: Row(
+          title: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -151,7 +151,7 @@ class HistoryView extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
             ],
           ),
-          subtitle: Row(
+          subtitle: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Name'),
