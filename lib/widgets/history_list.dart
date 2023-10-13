@@ -122,3 +122,44 @@ class HistoryList extends StatelessWidget {
     );
   }
 }
+
+class HistoryView extends StatelessWidget {
+  const HistoryView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: 10,
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: ListTile(
+          tileColor: Colors.white.withOpacity(0.8),
+          leading: Icon(
+            Icons.arrow_outward_outlined,
+            color: Colors.black,
+            size: 30,
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Paid To',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Text("₹50",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+            ],
+          ),
+          subtitle: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Name'),
+              Text('Yesterday'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
