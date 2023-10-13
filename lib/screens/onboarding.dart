@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class Onboarding extends StatefulWidget {
@@ -27,15 +26,15 @@ class _OnboardingState extends State<Onboarding> {
             },
             children: [
               for (int i = 1; i <= 4; i++)
-                SvgPicture.asset(
-                  'assets/frame$i.svg',
+                Image.asset(
+                  'assets/frame$i.png',
                   height: Get.size.height,
                   width: Get.size.width,
                 ),
               Stack(
                 children: [
-                  SvgPicture.asset(
-                    'assets/frame5.svg',
+                  Image.asset(
+                    'assets/frame5.png',
                     height: Get.size.height,
                     width: Get.size.width,
                   ),

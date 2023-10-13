@@ -74,6 +74,11 @@ flutter:
     - assets/Sign_in.png
     - assets/Login.png
     - assets/paynless.png
+    - assets/frame1.png
+    - assets/frame2.png
+    - assets/frame3.png
+    - assets/frame4.png
+    - assets/frame5.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
