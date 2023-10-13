@@ -323,7 +323,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.toNamed("/login");
+                          Get.back();
                         },
                         child: const Text(
                           "Login",
