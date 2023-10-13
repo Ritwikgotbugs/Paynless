@@ -96,7 +96,7 @@ class _OnboardingState extends State<Onboarding> {
                   ),
                   onPressed: () {
                     // Navigate to the next screen
-                    Get.offAllNamed('/login');
+                    Get.offAllNamed('/landing');
                   },
                   child: const Text(
                     'Skip',

@@ -43,11 +43,11 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/login",
       routes: <String, WidgetBuilder>{
-        "/login": (_) => const LoginPage(),
-        '/': (_) => const HomePage(),
         "/onboarding": (_) => const Onboarding(),
         "/landing": (_) => const Landing(),
+        "/login": (_) => const LoginPage(),
         "/signup": (_) => const SignUpPage(),
+        '/': (_) => const HomePage(),
         '/settings': (_) => const ManageCards(),
         '/history': (_) => const History(),
         '/profile': (_) => const Profile(),
